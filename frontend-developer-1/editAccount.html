@@ -66,20 +66,29 @@
             margin-bottom: 0.4rem;
         }
 
-        .value {
-            color: var(--very-light-pink);
+        .input {
+            background-color: var(--text-input-field);
+            border: none;
+            border-radius: 0.8rem;
+            height: 3rem;
+            font-family: 'Quicksand', sans-serif;
             font-size: var(--med-font);
-            margin: 0.8rem 0 3.2rem 0;
+            padding: 0.6rem;
+            margin-bottom: 1.2rem;
         }
 
-        .secondary-button {
-            background-color: var(--white);
+        .input-name, .input-email, .input-password {
+            margin-bottom: 2.2rem;
+        }
+
+        .primary-button {
+            background-color: var(--hospital-green);
             font-family: 'Quicksand', sans-serif;
-            color: var(--hospital-green);
+            color: var(--white);
             font-size: var(--med-font);
             font-weight: bold;
             border-radius: 0.8rem;
-            border: 0.1rem solid var(--hospital-green);
+            border: none;
             height: 5rem;
             width: 100%;
             cursor: pointer;
@@ -119,15 +128,15 @@
             <form action="/" class="form">
                 <div>
                     <label for="name" class="label">Name</label>
-                    <p class="value">Walter Gonzales</p>
+                    <input type="text" id="name" placeholder="Walter Gonzales" class="input input-name">
 
                     <label for="email" class="label">Email address</label>
-                    <p class="value">emiacevedoposos@gmail.com</p>
+                    <input type="email" id="email" placeholder="example@gmail.com" class="input input-email">
 
                     <label for="password" class="label">Password</label>
-                    <p class="value">*********</p>
+                    <input type="password" id="password" placeholder="*********" class="input input-password">
                 </div>
-                <input type="submit" value="Edit" class="secondary-button">
+                <input type="submit" value="Save" class="primary-button login-button">
             </form>
         </div>
     </main>
