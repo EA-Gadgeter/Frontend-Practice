@@ -28,46 +28,85 @@
             margin: 0;
             font-family: 'Quicksand', sans-serif;
         }
-        
-        .container {
-            width: 100%;
-            height: 100vh;
-            display: grid;
-            place-items: center;
-        }
 
         .mobile-menu {
-            display: grid;
-            grid-template-rows: auto 1fr auto; 
-            width: 64rem; 
+            padding: 2.4rem;
+        }
+
+        .mobile-menu ul{
+            padding: 0;
+            margin: 2.4rem 0 0;
+            list-style: none;
+        }
+
+        .mobile-menu ul:nth-child(1) {
+            border-bottom: 0.1rem solid var(--very-light-pink);
+        }
+
+        .mobile-menu ul:nth-child(1) li:first-child a{
+            cursor: default;
+        }
+
+        .mobile-menu ul li:last-child {
+            margin-bottom: 5rem;
+        }
+
+        .mobile-menu ul:nth-child(2) li:first-child {
+            margin-top: 5rem;
+        }
+
+        .mobile-menu ul li{
+            margin-bottom: 2.4rem;
+        }
+
+        .mobile-menu a{
+            text-decoration: none;
+            color: var(--black);
+            font-weight: bold;
+            font-size: var(--med-font);
+        }
+
+        .mobile-menu p {
+            font-size: var(--small-font);
+        }
+
+        .mobile-menu .email {
+            font-weight: 300;
+            margin-bottom: 0;
+        }
+
+        .mobile-menu .sign-out {
+            color: var(--hospital-green);
+            margin-top: 0.5rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .mobile-menu div {
+            position: absolute;
+            bottom: 0;
+            margin-bottom: 5rem;
         }
     </style>
 </head>
 <body>
     <div class="mobile-menu">
-        <div class="top-bar">
-            <img src="./icons/icon_close.png" alt="icon-close">
-            <p>CATEGORIES</p>
-        </div>
-        <div class="store-options">
-            <ul>
-                <li><a href="#">All</a></li>
-                <li><a href="#">Clothes</a></li>
-                <li><a href="#">Electronics</a></li>
-                <li><a href="#">Furnitures</a></li>
-                <li><a href="#">Toys</a></li>
-                <li><a href="#">Others</a></li>
-            </ul>
-        </div>
-        <div class="account-options">
-            <ul>
-                <li><a href="#">My orders</a></li>
-                <li><a href="#">My account</a></li>
-            </ul>
-        </div>
-        <div class="account-info">
-            <p>example@gmail.com</p>
-            <p>Sign out</p>
+        <ul>
+            <li><a href="#">CATEGORIES</a></li>
+            <li><a href="#">All</a></li>
+            <li><a href="#">Clothes</a></li>
+            <li><a href="#">Electronics</a></li>
+            <li><a href="#">Furnitures</a></li>
+            <li><a href="#">Toys</a></li>
+            <li><a href="#">Others</a></li>
+        </ul>
+        <ul>
+            <li><a href="#">My orders</a></li>
+            <li><a href="#">My account</a></li>
+        </ul>
+        <div>
+            <p class="email">example@gmail.com</p>
+            <p class="sign-out">Sign out</p>
         </div>
     </div>
 </body>
