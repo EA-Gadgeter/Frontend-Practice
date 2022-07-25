@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>Shopping Car</title>
+    <style>
+         :root {
+            --white: #FFFFFF;
+            --black: #000000;
+            --very-light-pink: #C7C7C7;
+            --text-input-field: #F7F7F7;
+            --hospital-green: #ACD9B2;
+            --small-font: 1.4rem;
+            --med-font: 1.6rem;
+            --large-font: 1.8rem;
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .title-container {
+            display: flex;
+        }
+
+        .title-container img {
+            transform: rotate(180deg);
+            margin-right: 1.4rem;
+        }
+
+        .title {
+            font-size: var(--large-font);
+            font-weight: bold;
+        }
+
+        .product-details {
+            width: 36rem;
+            padding: 2.4rem;
+            position: absolute;
+            right: 0;
+            box-sizing: border-box;
+        }
+
+        /*Es cada uno de los productos de la orden*/
+        .shopping-cart {
+            display: grid;
+            grid-template-columns: auto 1fr auto auto;
+            gap: 1.6rem;
+            margin-bottom: 2.4rem;
+
+            /*Centramos los elementos de manera vertical,se nota mucho más en el nombre del artíuclo y y su precio*/
+            align-items: center;
+        }
+
+        .shopping-cart figure {
+            margin: 0;
+        }
+
+        .shopping-cart figure img{
+            width: 7rem;
+            height: 7rem;
+            border-radius: 2rem;
+
+            /*Para evitar que la imagen se vea estirada o pixelada*/
+            object-fit: cover;
+        }
+
+        /*El segundo hijo que DEBE ser p*/
+        .shopping-cart p:nth-child(2) {
+            color: var(--very-light-pink);
+            font-size: var(--small-font);
+        }
+
+        /*El tercer hijo que DEBE ser p*/
+        .shopping-cart p:nth-child(3) {
+            font-size: var(--med-font);
+            font-weight: bold;
+        }
+
+        .shopping-cart img:last-child:hover {
+            cursor: pointer;
+        }
+
+        .my-order-container {
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+
+            /* Ancho del contenedor centrado */
+            width: 30rem;
+        }
+
+        .my-order-content {
+            /*Nos permite poner todo de manera vertical*/
+            display: flex;
+            flex-direction: column;
+        }
+
+        .order {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            
+            /*Separación ente los objetos del grid*/
+            gap: 1.6rem;
+
+            /*Centramos los elementos verticalmente, se nota principalmente en el precio ttal*/
+            align-items: center;
+            
+            background-color: var(--text-input-field);
+            margin-bottom: 2.5rem;
+            border-radius: 0.8rem;
+            padding: 0 2.4rem;
+        }
+
+        /*Aplica los estilos al primer parrafo dentro de la clase*/
+        .order p:nth-child(1){
+            /*Ponemos en vertical la fecha y el numero de articulos de la arden*/
+            display: flex;
+            flex-direction: column;
+        }
+
+        /*Dentro de las etiqueta p, el primer hijo que DEBE ser span
+        la fecha de compra de la orden*/
+        .order p span:first-child {
+            font-size: var(--med-font);
+            font-weight: bold;
+        }
+
+         /*Dentro de las etiqueta p, el hijo numero 2 que debe ser span*/
+        .order p span:nth-child(2) {
+            font-size: var(--small-font);
+            color: var(--very-light-pink);
+        }
+
+        /*El hijo número 2 que DEBE ser p, que es el precio de la compra*/
+        .order p:nth-child(2){
+            text-align: end;
+            font-size: var(--med-font);
+            font-weight: bold;
+        }
+
+        .primary-button {
+            background-color: var(--hospital-green);
+            border-radius: 0.8rem;
+            border: none;
+            color: var(--white);
+            width: 100%;
+            cursor: pointer;
+            font-size: var(--med-font);
+            font-family: 'Quicksand', sans-serif;
+            height: 5rem;
+        }
+
+        @media (max-width: 640px) {
+            .product-details {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <aside class="product-details">
+        <div class="title-container">
+            <img src="./icons/flechita.svg" alt="arrow" class="arrow">
+            <p class="title">Shopping cart</p>  
+        </div>
+        
+        <div class="my-order-content">
+            <div class="shopping-cart">
+                <figure>
+                    <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="product bike">
+                </figure>
+                <p>Bike</p>
+                <p>$30.00</p>
+                <img src="./icons/icon_close.png" alt="">
+            </div>
+
+            <div class="shopping-cart">
+                <figure>
+                    <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="product bike">
+                </figure>
+                <p>Bike</p>
+                <p>$30.00</p>
+                <img src="./icons/icon_close.png" alt="">
+            </div>
+
+            <div class="shopping-cart">
+                <figure>
+                    <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="product bike">
+                </figure>
+                <p>Bike</p>
+                <p>$30.00</p>
+                <img src="./icons/icon_close.png" alt="">
+            </div>
+    
+            <div class="order">
+                <p>
+                    <span>Total</span>
+                </p>
+                <p>
+                    $560.00
+                </p>
+            </div>
+        </div>
+        <button class="primary-button">Checkout</button>
+    </aside>
+</body>
+</html>

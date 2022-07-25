@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>NavBar</title>
+    <style>
+        :root {
+            --white: #FFFFFF;
+            --black: #000000;
+            --very-light-pink: #C7C7C7;
+            --text-input-field: #F7F7F7;
+            --hospital-green: #ACD9B2;
+            --small-font: 1.4rem;
+            --med-font: 1.6rem;
+            --large-font: 1.8rem;
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        nav {
+            /*Usamos flex para separar la parte izquierda y parte
+            derecha de la barra de navegación horizontalmente*/
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2.4rem;
+            border-bottom: 0.1rem solid var(--very-light-pink);
+        }
+
+        /*La imagen del toogle del menu es algo solo de mobile, por lo que por defecto
+        la desactivamos para desktop*/
+        .menu{
+            display: none;
+        }
+
+        /*Si solo especificamos el width o height de una imagen, el otro se ajustara automaticamente
+        para evitar estiramiento o que la imagen se vea pixelada*/
+        .logo {
+            width: 15rem;
+        }
+
+        /*Si no agregamos estos, por alguna razón el lado izquierda no pasa a estar
+        de manera horizontal*/
+        .nav-bar-left {
+            display: flex;
+        }
+
+        nav .nav-bar-left ul{
+            margin-left: 1.2rem;
+            font-size: var(--med-font);
+        }
+
+        /*Quitamos todas las decoraciones y estilos que agrega el usar listas*/
+        .nav-bar-left ul, .nav-bar-right ul{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            /*Centramos los elementos de manera vertical y le damos una altura a ambas
+            partes de la barra de navegación, esto le dara de manera indirecta, una altura
+            a la barra de navegación
+            
+            En este sentido da un mejor resultado que darle una altura a <nav> directamente,
+            ya que de esa manera la imagen del menu tratara de ajustarse a esta altura
+            logrando que quede desproporcionada*/
+            display: flex;
+            align-items: center;
+            height: 6rem;
+        }
+
+        /*Quitamos todas las decoraciones que agregan la etiqueta <a> y dames los estilos necesarios*/
+        .nav-bar-left ul li a{
+            text-decoration: none;
+            color: var(--very-light-pink);
+            border: 1px solid var(--white);
+            padding: 0.8rem;
+            border-radius: 0.8rem;
+        }
+
+        /*Al pasar el cursos por encima de una de las opciones del menu, esta
+        adquiere un color verde en el texto y el borde*/
+        .nav-bar-left ul li a:hover{
+            border-color: var(--hospital-green);
+            color: var(--hospital-green);
+        }
+
+        .nav-bar-email {
+            color: var(--black);
+            font-size: var(--small-font);
+            margin-right: 1.2rem;
+        }
+
+        /*Este sera el contenedor PADRE con posición relativa que nos
+        permitira ubicar el circulo con la cantidad de productos en el
+        carrito*/
+        .nav-shopping-cart {
+            position: relative;
+        }
+
+        .nav-shopping-cart div {
+            /*Creamos el circulo de colo verde*/
+            width: 1.6rem;
+            height: 1.6rem;
+            background-color: var(--hospital-green);
+            border-radius: 50%;
+            font-size: var(--small-font);
+            font-weight: bold;
+
+            /*Este sera el contenedor con posición absoluta, usamos top y right
+            para colocar el circulo en su lugar, centramos el número dentro
+            del circulo con GRID*/
+            position: absolute;
+            top: -0.6rem;
+            right: -0.3rem;
+            display: grid;
+            place-items: center;
+        }
+
+        @media (max-width: 640px) {
+            .menu {
+                display: block;
+            }
+
+            .nav-bar-left ul{
+                display: none;
+            }
+
+            .nav-bar-email {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <!-- Imagen del menu, principal mente para mobile -->
+        <img src="./icons/icon_menu.svg" alt="menu-icon" class="menu">
+
+        <div class="nav-bar-left">
+            <img src="./logos/logo_yard_sale.svg" alt="logo" class="logo">
+
+            <!-- Dividimos la barra en 2 partes, la derecha y la izquierda
+            usamos una lista y a ya que recordemos que nos llevaran a
+            otras paginas -->
+            <ul>
+                <li><a href="#">All</a></li>
+                <li><a href="#">Clothes</a></li>
+                <li><a href="#">Electronics</a></li>
+                <li><a href="#">Furniture</a></li>
+                <li><a href="#">Toys</a></li>
+                <li><a href="#">Others</a></li>
+            </ul>
+        </div>
+
+        <!-- No es necesario ocupar <a></a> ya que no son cosas que nos redijiran -->
+        <div class="nav-bar-right">
+            <ul>
+                <li class="nav-bar-email">example@gmail.com</li>
+                <li class="nav-shopping-cart">
+                    <img src="./icons/icon_shopping_cart.svg" alt="shopping cart">
+                    <!-- Colocamos el numero en un div por separado, para poder crear el circulo que
+                    lo contiene en el estilo -->
+                    <div>2</div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</body>
+</html>
