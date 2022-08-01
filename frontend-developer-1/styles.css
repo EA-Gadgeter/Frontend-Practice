@@ -15,7 +15,6 @@ html {
 
 body {
     margin: 0;
-    padding: 0;
     font-family: 'Quicksand', sans-serif;
 }
 
@@ -23,6 +22,7 @@ body {
     display: none;
 }
 
+/* Navbar (General) */
 nav {
     /*Usamos flex para separar la parte izquierda y parte
     derecha de la barra de navegación horizontalmente*/
@@ -41,7 +41,7 @@ la desactivamos para desktop*/
 /*Si solo especificamos el width o height de una imagen, el otro se ajustara automaticamente
 para evitar estiramiento o que la imagen se vea pixelada*/
 .logo {
-    width: 15rem;
+    width: 10rem;
 }
 
 /*Si no agregamos estos, por alguna razón el lado izquierda no pasa a estar
@@ -91,12 +91,9 @@ adquiere un color verde en el texto y el borde*/
 
 .nav-bar-email {
     color: var(--black);
+    cursor: pointer;
     font-size: var(--small-font);
     margin-right: 1.2rem;
-}
-
-.nav-bar-email:hover {
-    cursor: pointer;
 }
 
 /*Este sera el contenedor PADRE con posición relativa que nos
@@ -173,16 +170,81 @@ carrito*/
     font-size: var(--small-font);
 }
 
+/*Mobile Menu*/
+
+.mobile-menu {
+    padding: 2.4rem;
+    position: absolute;
+    top: 6rem;
+}
+
+.mobile-menu a {
+    text-decoration: none;
+    color: var(--black);
+    font-weight: bold;
+}
+
+.mobile-menu ul{
+    padding: 0;
+    margin: 2.4rem 0 0;
+    list-style: none;
+}
+
+.mobile-menu ul:nth-child(1) {
+    border-bottom: 0.1rem solid var(--very-light-pink);
+}
+
+.mobile-menu ul:nth-child(1) li:first-child a{
+    cursor: default;
+}
+
+.mobile-menu ul li:last-child {
+    margin-bottom: 5rem;
+}
+
+.mobile-menu ul:nth-child(2) li:first-child {
+    margin-top: 5rem;
+}
+
+.mobile-menu ul li{
+    margin-bottom: 2.4rem;
+}
+
+.mobile-menu a{
+    text-decoration: none;
+    color: var(--black);
+    font-weight: bold;
+    font-size: var(--med-font);
+}
+
+.mobile-menu p {
+    font-size: var(--small-font);
+}
+
+.mobile-menu .email {
+    font-weight: 300;
+    margin-bottom: 0;
+}
+
+.mobile-menu .sign-out {
+    color: var(--hospital-green);
+    margin-top: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 @media (max-width: 640px) {
     .menu {
         display: block;
     }
 
-    .nav-bar-left ul{
+    .nav-bar-left ul, .nav-bar-email, .desktop-menu {
         display: none;
     }
+}
 
-    .nav-bar-email {
+@media (min-width: 641px) {
+    .mobile-menu {
         display: none;
     }
 }
