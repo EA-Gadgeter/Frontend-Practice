@@ -1,0 +1,188 @@
+:root {
+    --white: #FFFFFF;
+    --black: #000000;
+    --very-light-pink: #C7C7C7;
+    --text-input-field: #F7F7F7;
+    --hospital-green: #ACD9B2;
+    --small-font: 1.4rem;
+    --med-font: 1.6rem;
+    --large-font: 1.8rem;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.inactive {
+    display: none;
+}
+
+nav {
+    /*Usamos flex para separar la parte izquierda y parte
+    derecha de la barra de navegación horizontalmente*/
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2.4rem;
+    border-bottom: 0.1rem solid var(--very-light-pink);
+}
+
+/*La imagen del toogle del menu es algo solo de mobile, por lo que por defecto
+la desactivamos para desktop*/
+.menu{
+    display: none;
+}
+
+/*Si solo especificamos el width o height de una imagen, el otro se ajustara automaticamente
+para evitar estiramiento o que la imagen se vea pixelada*/
+.logo {
+    width: 15rem;
+}
+
+/*Si no agregamos estos, por alguna razón el lado izquierda no pasa a estar
+de manera horizontal*/
+.nav-bar-left {
+    display: flex;
+}
+
+nav .nav-bar-left ul{
+    margin-left: 1.2rem;
+    font-size: var(--med-font);
+}
+
+/*Quitamos todas las decoraciones y estilos que agrega el usar listas*/
+.nav-bar-left ul, .nav-bar-right ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    /*Centramos los elementos de manera vertical y le damos una altura a ambas
+    partes de la barra de navegación, esto le dara de manera indirecta, una altura
+    a la barra de navegación
+
+    En este sentido da un mejor resultado que darle una altura a <nav> directamente,
+    ya que de esa manera la imagen del menu tratara de ajustarse a esta altura
+    logrando que quede desproporcionada*/
+    display: flex;
+    align-items: center;
+    height: 6rem;
+}
+
+/*Quitamos todas las decoraciones que agregan la etiqueta <a> y dames los estilos necesarios*/
+.nav-bar-left ul li a{
+    text-decoration: none;
+    color: var(--very-light-pink);
+    border: 1px solid var(--white);
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+}
+
+/*Al pasar el cursos por encima de una de las opciones del menu, esta
+adquiere un color verde en el texto y el borde*/
+.nav-bar-left ul li a:hover{
+    border-color: var(--hospital-green);
+    color: var(--hospital-green);
+}
+
+.nav-bar-email {
+    color: var(--black);
+    font-size: var(--small-font);
+    margin-right: 1.2rem;
+}
+
+.nav-bar-email:hover {
+    cursor: pointer;
+}
+
+/*Este sera el contenedor PADRE con posición relativa que nos
+permitira ubicar el circulo con la cantidad de productos en el
+carrito*/
+.nav-shopping-cart {
+    position: relative;
+}
+
+.nav-shopping-cart div {
+    /*Creamos el circulo de colo verde*/
+    width: 1.6rem;
+    height: 1.6rem;
+    background-color: var(--hospital-green);
+    border-radius: 50%;
+    font-size: var(--small-font);
+    font-weight: bold;
+
+    /*Este sera el contenedor con posición absoluta, usamos top y right
+    para colocar el circulo en su lugar, centramos el número dentro
+    del circulo con GRID*/
+    position: absolute;
+    top: -0.6rem;
+    right: -0.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.desktop-menu {
+    position: absolute;
+    top: 6rem;
+    right: 6rem;
+    background: var(--white);
+    width: 10rem;
+    height: auto;
+    border: 0.1rem solid var(--very-light-pink);
+    border-radius: 0.6rem;
+
+    /*Top, right, bottom, left*/
+    padding: 2rem 2rem 0 2rem;
+}
+
+.desktop-menu ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.desktop-menu ul li{
+    text-align: end;
+}
+
+/*Todos MENOS el último hijo*/
+.desktop-menu ul li:not(:last-child){
+    font-weight: bold;
+    font-size: var(--med-font);
+}
+
+.desktop-menu ul li a{
+    color:var(--black);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+.desktop-menu ul li:last-child{
+    padding-top: 2rem;
+    border-top:  0.1rem solid var(--very-light-pink);
+}
+
+.desktop-menu ul li:last-child a{
+    color: var(--hospital-green);
+    font-size: var(--small-font);
+}
+
+@media (max-width: 640px) {
+    .menu {
+        display: block;
+    }
+
+    .nav-bar-left ul{
+        display: none;
+    }
+
+    .nav-bar-email {
+        display: none;
+    }
+}
