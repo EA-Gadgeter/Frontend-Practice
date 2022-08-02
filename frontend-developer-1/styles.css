@@ -178,6 +178,9 @@ carrito*/
     padding: 2.4rem;
     position: absolute;
     top: 6.1rem;
+    left: 0;
+    width: calc(100% - 4.8rem);
+    height: 100%;
 }
 
 .mobile-menu a {
@@ -369,6 +372,91 @@ la fecha de compra de la orden*/
     height: 5rem;
 }
 
+/*Detalles de un producto*/
+
+.product-detailed {
+    width: 36rem;
+    padding-bottom: 2.4rem;
+    background-color: white;
+
+    /*Ya que en desktop estos es un aside, usamos position absolute
+    para ponerlo hasta la derecha*/
+    position: absolute;
+    right: 0;
+}
+
+/*Creamos el boton de blanco redondo y usamos position absoluto para pocionarlo
+en la esquina superior izquierda*/
+.product-detailed-close {
+    background: var(--white);
+    width: 1.4rem;
+    height: 1.4rem;
+    position: absolute;
+    top: 1.2rem;
+    left: 1.2rem;
+    padding: 1.2rem;
+    border-radius: 50%;
+}
+
+.product-detailed-close:hover {
+    cursor: pointer;
+}
+
+/*La imagen abarcara todo el ancho del contenedor
+y usamos le damos border solo en la partde de abajo*/
+.product-detailed > img:nth-child(2) {
+    width: 100%;
+    height: 36rem;
+    border-radius: 0 0 2rem 2rem;
+    object-fit: cover;
+}
+
+.product-info {
+    margin: 2.4rem 2.4rem 0 2.4rem;
+}
+
+/*Damos estilo a los 3 textos con pseudoclases*/
+.products-info p:nth-child(1) {
+    font-weight: bold;
+    font-size: var(--med-font);
+    margin-top: 0;
+    margin-bottom: 0.4rem;
+}
+
+.products-info p:nth-child(2) {
+    color:var(--very-light-pink);
+    font-size: var(--med-font);
+    margin-top: 0;
+    margin-bottom: 3.6rem;
+}
+
+.products-info p:nth-child(3) {
+    color:var(--very-light-pink);
+    font-size: var(--small-font);
+    margin-top: 0;
+    margin-bottom: 3.6rem;
+}
+
+.primary-button {
+    background-color: var(--hospital-green);
+    border-radius: 0.8rem;
+    border: none;
+    color: var(--white);
+    width: 100%;
+    cursor: pointer;
+    font-size: var(--med-font);
+    font-family: 'Quicksand', sans-serif;
+    height: 5rem;
+}
+
+/*Usamos FLEXBOX para centrar el contenido del boto*/
+.add-to-cart-button {
+    /*Si lo hacemos con GRID, nos lo pone vertical*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /*Lista de productos*/
 
 .cards-container {
@@ -388,6 +476,7 @@ la fecha de compra de la orden*/
     place-content: center;
 
     margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .product-card {
@@ -455,10 +544,29 @@ para evitar problemas*/
     .cards-container {
         --card-size: 14rem;
     }
+
+    .product-detailed {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 @media (min-width: 641px) {
     .mobile-menu {
         display: none;
+    }
+
+    .product-detailed {
+        padding: 2.4rem;
+        border-radius: 0 0 2rem 2rem;
+    }
+
+    .product-detailed-close {
+        top: 3rem;
+        left: 3rem;
+    }
+
+    .product-detailed > img:nth-child(2) {
+        border-radius: 2rem;
     }
 }

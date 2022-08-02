@@ -3,17 +3,47 @@ function toggleMenu(menu) {
     if(menu.classList.contains("mobile-menu")) { // Checking what menu is wanted to open
         if(!shoppingCart.classList.contains("inactive")) // Checking if menus that overlap are active
             shoppingCart.classList.add("inactive"); // If they are, we quit it from screen
+
+        if(!productDetailed.classList.contains("inactive"))
+            productDetailed.classList.add("inactive")
     }
-    else if(menu.classList.contains("product-details")){
+    else if(menu.classList.contains("product-details")){ //
         if(!mobileMenu.classList.contains("inactive"))
             mobileMenu.classList.add("inactive");
 
         if(!desktopMenu.classList.contains("inactive"))
             desktopMenu.classList.add("inactive");
+
+        if(!productDetailed.classList.contains("inactive"))
+            productDetailed.classList.add("inactive")
     }
     else if(menu.classList.contains("desktop-menu")) {
+
         if(!shoppingCart.classList.contains("inactive"))
             shoppingCart.classList.add("inactive");
+
+        if(!productDetailed.classList.contains("inactive"))
+            productDetailed.classList.add("inactive")
+    }
+    else if(menu.classList.contains("product-detailed")){ // To open product detailed
+        if(!mobileMenu.classList.contains("inactive"))
+            mobileMenu.classList.add("inactive");
+
+        if(!shoppingCart.classList.contains("inactive"))
+            shoppingCart.classList.add("inactive");
+
+        if(!desktopMenu.classList.contains("inactive"))
+            desktopMenu.classList.add("inactive");
+
+        if(menu.classList.contains("inactive"))
+            menu.classList.remove("inactive")
+        return;
+    }
+
+    else if(menu.classList.contains("product-detailed-close")){ // To close product detailed by clicking button
+        if(!productDetailed.classList.contains("inactive"))
+            productDetailed.classList.add("inactive")
+        return;
     }
 
     menu.classList.toggle("inactive");
@@ -26,6 +56,7 @@ function createProductCard(product) {
 
     const img = document.createElement("img");
     img.setAttribute("src", product.image);
+    img.addEventListener("click", () => toggleMenu(productDetailed));
 
     const productInfo = document.createElement("div");
     productInfo.classList.add("product-info");
@@ -67,10 +98,13 @@ const mobileMenu = document.querySelector(".mobile-menu");
 const cartIcon = document.querySelector(".nav-shopping-cart");
 const shoppingCart = document.querySelector(".product-details");
 const cardsContainer = document.querySelector(".cards-container");
+const productDetailed = document.querySelector(".product-detailed");
+const productDetailedClose = document.querySelector(".product-detailed-close");
 
 navBarEmail.addEventListener("click", () => toggleMenu(desktopMenu));
 burgerIcon.addEventListener("click", () => toggleMenu(mobileMenu));
 cartIcon.addEventListener("click", () => toggleMenu(shoppingCart));
+productDetailedClose.addEventListener("click", () => toggleMenu(productDetailedClose));
 
 const productList = [];
 
@@ -104,4 +138,4 @@ productList.push({
     image: 'https://cdn.siroko.com/s/files/1/1220/6874/products/siroko-tech-k3s-clearfog-lente-antiniebla-frontal/1200x/crop_center.jpg?v=1635209603'
 });
 
-renderProducts();
+renderProducts(productList);
