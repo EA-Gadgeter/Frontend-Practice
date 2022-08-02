@@ -369,6 +369,74 @@ la fecha de compra de la orden*/
     height: 5rem;
 }
 
+/*Lista de productos*/
+
+.cards-container {
+    display: grid;
+    --card-size: 24rem;
+    /*Con la siguiente linea hacemos que el GRID
+    se repita indefinidamente segun el número de
+    árticulos, cada CASILLA DEL GRID
+    , tentra un
+    tamaño de 24*24rem*/
+    grid-template-columns: repeat(auto-fill, var(--card-size));
+
+    /*Espacio entre las CASILLAS DEL GRID*/
+    gap: 2.6rem;
+
+    /*Centramos el contenido horizontalmente*/
+    place-content: center;
+
+    margin-top: 2rem;
+}
+
+.product-card {
+    /*Tamaño de cada producto*/
+    width: var(--card-size);
+}
+
+.product-card img {
+    width: 100%;
+    height: var(--card-size);
+    border-radius: 2rem;
+
+    /*Esta propiedad hace que la imagen se adecue al
+    tamaño dado, para no verse estirada o pixelada*/
+    object-fit: cover;
+}
+
+.product-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.2rem;
+}
+
+/*Por defecto la etiqueta figure tiene un margin, se lo quitamos
+para evitar problemas*/
+.product-info figure {
+    margin: 0;
+}
+
+.product-info figure img {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+/*El primer párrafo dentro de un div*/
+.product-info div p:nth-child(1) {
+    font-weight: bold;
+    font-size: var(--med-font);
+    margin-top: 0;
+    margin-bottom: 0.4rem;
+}
+.product-info div p:nth-child(2) {
+    font-size: var(--small-font);
+    color: var(--very-light-pink);
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 @media (max-width: 640px) {
     .menu {
         display: block;
@@ -380,6 +448,12 @@ la fecha de compra de la orden*/
 
     .product-details {
         width: 100%;
+    }
+
+    /*Media Querie que nos ayuda a que el tamaño de las imagenes
+    de los productos sea más chico en dispositivos mobiles*/
+    .cards-container {
+        --card-size: 14rem;
     }
 }
 
