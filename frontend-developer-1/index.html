@@ -1,273 +1,178 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --white: #FFFFFF;
-            --black: #000000;
-            --very-light-pink: #C7C7C7;
-            --text-input-field: #F7F7F7;
-            --hospital-green: #ACD9B2;
-            --small-font: 1.4rem;
-            --med-font: 1.6rem;
-            --large-font: 1.8rem;
-        }
-
-        body {
-            margin: 0;
-            font-family: 'Quicksand', sans-serif;
-        }
-
-        html {
-            font-size: 62.5%;
-        }
-
-        .cards-container {
-            display: grid;
-            --card-size: 24rem;
-            /*Con la siguiente linea hacemos que el GRID
-            se repita indefinidamente segun el número de
-            árticulos, cada CASILLA DEL GRID
-            , tentra un 
-            tamaño de 24*24rem*/
-            grid-template-columns: repeat(auto-fill, var(--card-size));
-
-            /*Espacio entre las CASILLAS DEL GRID*/
-            gap: 2.6rem;
-
-            /*Centramos el contenido horizontalmente*/
-            place-content: center;
-        }
-
-        .product-card {
-            /*Tamaño de cada producto*/
-            width: var(--card-size);
-        }
-
-        .product-card img {
-            width: 100%;
-            height: var(--card-size);
-            border-radius: 2rem;
-
-            /*Esta propiedad hace que la imagen se adecue al
-            tamaño dado, para no verse estirada o pixelada*/
-            object-fit: cover;
-        }
-
-        .product-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 1.2rem;
-        }
-
-        /*Por defecto la etiqueta figure tiene un margin, se lo quitamos
-        para evitar problemas*/
-        .product-info figure {
-            margin: 0;
-        }
-
-        .product-info figure img {
-            width: 3.5rem;
-            height: 3.5rem;
-        }
-
-        /*El primer párrafo dentro de un div*/
-        .product-info div p:nth-child(1) {
-            font-weight: bold;
-            font-size: var(--med-font);
-            margin-top: 0;
-            margin-bottom: 0.4rem;
-        }
-        .product-info div p:nth-child(2) {
-            font-size: var(--small-font);
-            color: var(--very-light-pink);
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-
-        /*Media Querie que nos ayuda a que el tamaño de las imagenes
-        de los productos sea más chico en dispisitivos mobiles*/
-        @media (max-width: 640px){
-            .cards-container {
-                --card-size: 14rem;
-            }
-
-        }
-    </style>
+    <title>YardSale</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <main class="main-container">
+    <nav>
+        <!-- Imagen del menu, principal mente para mobile -->
+        <img src="./icons/icon_menu.svg" alt="menu-icon" class="menu">
 
-        <!-- Contenedor para el grid de las imagenes de los productos -->
-        <div class="cards-container">
+        <div class="nav-bar-left">
+            <img src="./logos/logo_yard_sale.svg" alt="logo" class="logo">
 
-            <!-- Imagen o card del "producto" que esta compuesta por la imagen
-            e información del producto en la parte inferior-->
-            <div class="product-card">
-                <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                <div class="product-info"> 
-                    <!-- Separamos la información en un contenedor aparte
-                    para facilitar los estilos -->
-                    <div>
-                        <p>$120.00</p>
-                        <p>Bike</p>
-                    </div>
-                    <figure>
-                        <img src="./icons/bt_add_to_cart.svg" alt="">
-                    </figure>
-                </div>
-            </div>
+            <!-- Dividimos la barra en 2 partes, la derecha y la izquierda
+            usamos una lista y a ya que recordemos que nos llevaran a
+            otras paginas -->
+            <ul>
+                <li><a href="#">All</a></li>
+                <li><a href="#">Clothes</a></li>
+                <li><a href="#">Electronics</a></li>
+                <li><a href="#">Furniture</a></li>
+                <li><a href="#">Toys</a></li>
+                <li><a href="#">Others</a></li>
+            </ul>
+        </div>
 
-            <div class="product-card">
-                <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                <div class="product-info">
-                    <div>
-                        <p>$120.00</p>
-                        <p>Bike</p>
-                    </div>
-                    <figure>
-                        <img src="./icons/bt_add_to_cart.svg" alt="">
-                    </figure>
-                </div>
-            </div>
+        <!-- No es necesario ocupar <a></a>, ya que no son cosas que nos redirijan -->
+        <div class="nav-bar-right">
+            <ul>
+                <li class="nav-bar-email">example@gmail.com</li>
+                <li class="nav-shopping-cart">
+                    <img src="./icons/icon_shopping_cart.svg" alt="shopping cart">
+                    <!-- Colocamos el numero en un div por separado, para poder crear el circulo que
+                    lo contiene en el estilo -->
+                    <div>2</div>
+                </li>
+            </ul>
+        </div>
 
-            <div class="product-card">
-                <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                <div class="product-info">
-                    <div>
-                        <p>$120.00</p>
-                        <p>Bike</p>
-                    </div>
-                    <figure>
-                        <img src="./icons/bt_add_to_cart.svg" alt="">
-                    </figure>
-                </div>
-            </div>
+        <div class="desktop-menu inactive">
+            <ul>
+                <li>
+                    <a href="#" class="title">My orders</a>
+                </li>
+                <li>
+                    <a href="#">My account</a>
+                </li>
+                <li>
+                    <a href="#">Sign out</a>
+                </li>
+            </ul>
+        </div>
 
-            <div class="product-card">
-                <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                <div class="product-info">
-                    <div>
-                        <p>$120.00</p>
-                        <p>Bike</p>
-                    </div>
-                    <figure>
-                        <img src="./icons/bt_add_to_cart.svg" alt="">
-                    </figure>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                <div class="product-info">
-                    <div>
-                        <p>$120.00</p>
-                        <p>Bike</p>
-                    </div>
-                    <figure>
-                        <img src="./icons/bt_add_to_cart.svg" alt="">
-                    </figure>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                <div class="product-info">
-                    <div>
-                        <p>$120.00</p>
-                        <p>Bike</p>
-                    </div>
-                    <figure>
-                        <img src="./icons/bt_add_to_cart.svg" alt="">
-                    </figure>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                <div class="product-info">
-                    <div>
-                        <p>$120.00</p>
-                        <p>Bike</p>
-                    </div>
-                    <figure>
-                        <img src="./icons/bt_add_to_cart.svg" alt="">
-                    </figure>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                <div class="product-info">
-                    <div>
-                        <p>$120.00</p>
-                        <p>Bike</p>
-                    </div>
-                    <figure>
-                        <img src="./icons/bt_add_to_cart.svg" alt="">
-                    </figure>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                <div class="product-info">
-                    <div>
-                        <p>$120.00</p>
-                        <p>Bike</p>
-                    </div>
-                    <figure>
-                        <img src="./icons/bt_add_to_cart.svg" alt="">
-                    </figure>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                <div class="product-info">
-                    <div>
-                        <p>$120.00</p>
-                        <p>Bike</p>
-                    </div>
-                    <figure>
-                        <img src="./icons/bt_add_to_cart.svg" alt="">
-                    </figure>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                <div class="product-info">
-                    <div>
-                        <p>$120.00</p>
-                        <p>Bike</p>
-                    </div>
-                    <figure>
-                        <img src="./icons/bt_add_to_cart.svg" alt="">
-                    </figure>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                <div class="product-info">
-                    <div>
-                        <p>$120.00</p>
-                        <p>Bike</p>
-                    </div>
-                    <figure>
-                        <img src="./icons/bt_add_to_cart.svg" alt="">
-                    </figure>
-                </div>
+        <div class="mobile-menu inactive">
+            <ul>
+                <li><a href="#">CATEGORIES</a></li>
+                <li><a href="#">All</a></li>
+                <li><a href="#">Clothes</a></li>
+                <li><a href="#">Electronics</a></li>
+                <li><a href="#">Furnitures</a></li>
+                <li><a href="#">Toys</a></li>
+                <li><a href="#">Others</a></li>
+            </ul>
+            <ul>
+                <li><a href="#">My orders</a></li>
+                <li><a href="#">My account</a></li>
+            </ul>
+            <div>
+                <p class="email">example@gmail.com</p>
+                <p class="sign-out">Sign out</p>
             </div>
         </div>
-    </main>
+    </nav>
+
+    <aside class="product-details inactive">
+        <div class="title-container">
+            <img src="./icons/flechita.svg" alt="arrow" class="arrow">
+            <p class="title">Shopping cart</p>
+        </div>
+
+        <div class="my-order-content">
+            <div class="shopping-cart">
+                <figure>
+                    <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="product bike">
+                </figure>
+                <p>Bike</p>
+                <p>$30.00</p>
+                <img src="./icons/icon_close.png" alt="">
+            </div>
+
+            <div class="shopping-cart">
+                <figure>
+                    <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="product bike">
+                </figure>
+                <p>Bike</p>
+                <p>$30.00</p>
+                <img src="./icons/icon_close.png" alt="">
+            </div>
+
+            <div class="shopping-cart">
+                <figure>
+                    <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="product bike">
+                </figure>
+                <p>Bike</p>
+                <p>$30.00</p>
+                <img src="./icons/icon_close.png" alt="">
+            </div>
+
+            <div class="order">
+                <p>
+                    <span>Total</span>
+                </p>
+                <p>
+                    $560.00
+                </p>
+            </div>
+        </div>
+        <button class="primary-button">Checkout</button>
+    </aside>
+
+    <aside class="product-detailed inactive">
+        <!-- Encerramos el icono de cierre en un div, y hacer un boto más grande
+        y redondo. -->
+        <div class="product-detailed-close">
+            <img src="./icons/icon_close.png" alt="close">
+        </div>
+
+        <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
+        <div class="products-info">
+            <p>$35,00</p>
+            <p>Bike</p>
+            <p>
+                With its funcional and practical design, this bike also fullfills a decorative function,
+                adding personality an a retro-vintage aesthetic to your house
+            </p>
+            <button class="primary-button add-to-cart-button">
+                <!-- Agregamos la imagen del icono dentro del mismo boton. -->
+                <img src="./icons/bt_add_to_cart.svg" alt="add to cart">
+                Add to cart
+            </button>
+        </div>
+    </aside>
+
+    <section class="main-container">
+
+        <!-- Contenedor para el grid de las imágenes de los productos -->
+        <div class="cards-container">
+
+            <!-- Imagen o card del "producto" que está compuesta por la imagen
+            e información del producto en la parte inferior-->
+            <!--<div class="product-card">
+                <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+                <div class="product-info">
+                    &lt;!&ndash; Separamos la información en un contenedor aparte
+                    para facilitar los estilos &ndash;&gt;
+                    <div>
+                        <p>$120.00</p>
+                        <p>Bike</p>
+                    </div>
+                    <figure>
+                        <img src="./icons/bt_add_to_cart.svg" alt="">
+                    </figure>
+                </div>
+            </div> SE AGREGARAN LOS PRODUCTOS POR JAVASCRIPT-->
+
+        </div>
+    </section>
+
+    <script src="./main.js"></script>
 </body>
 </html>

@@ -1,0 +1,572 @@
+:root {
+    --white: #FFFFFF;
+    --black: #000000;
+    --very-light-pink: #C7C7C7;
+    --text-input-field: #F7F7F7;
+    --hospital-green: #ACD9B2;
+    --small-font: 1.4rem;
+    --med-font: 1.6rem;
+    --large-font: 1.8rem;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.inactive {
+    display: none;
+}
+
+/* Navbar (General) */
+nav {
+    /*Usamos flex para separar la parte izquierda y parte
+    derecha de la barra de navegación horizontalmente*/
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2.4rem;
+    border-bottom: 0.1rem solid var(--very-light-pink);
+}
+
+/*La imagen del toogle del menu es algo solo de mobile, por lo que por defecto
+la desactivamos para desktop*/
+.menu{
+    display: none;
+}
+
+/*Si solo especificamos el width o height de una imagen, el otro se ajustara automaticamente
+para evitar estiramiento o que la imagen se vea pixelada*/
+.logo {
+    width: 10rem;
+}
+
+/*Si no agregamos estos, por alguna razón el lado izquierda no pasa a estar
+de manera horizontal*/
+.nav-bar-left {
+    display: flex;
+}
+
+nav .nav-bar-left ul{
+    margin-left: 1.2rem;
+    font-size: var(--med-font);
+}
+
+/*Quitamos todas las decoraciones y estilos que agrega el usar listas*/
+.nav-bar-left ul, .nav-bar-right ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    /*Centramos los elementos de manera vertical y le damos una altura a ambas
+    partes de la barra de navegación, esto le dara de manera indirecta, una altura
+    a la barra de navegación
+
+    En este sentido da un mejor resultado que darle una altura a <nav> directamente,
+    ya que de esa manera la imagen del menu tratara de ajustarse a esta altura
+    logrando que quede desproporcionada*/
+    display: flex;
+    align-items: center;
+    height: 6rem;
+}
+
+/*Quitamos todas las decoraciones que agregan la etiqueta <a> y dames los estilos necesarios*/
+.nav-bar-left ul li a{
+    text-decoration: none;
+    color: var(--very-light-pink);
+    border: 1px solid var(--white);
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+}
+
+/*Al pasar el cursos por encima de una de las opciones del menu, esta
+adquiere un color verde en el texto y el borde*/
+.nav-bar-left ul li a:hover{
+    border-color: var(--hospital-green);
+    color: var(--hospital-green);
+}
+
+.nav-bar-email {
+    color: var(--black);
+    cursor: pointer;
+    font-size: var(--small-font);
+    margin-right: 1.2rem;
+}
+
+/*Este sera el contenedor PADRE con posición relativa que nos
+permitira ubicar el circulo con la cantidad de productos en el
+carrito*/
+.nav-shopping-cart {
+    position: relative;
+    cursor: pointer;
+}
+
+.nav-shopping-cart div {
+    /*Creamos el circulo de colo verde*/
+    width: 1.6rem;
+    height: 1.6rem;
+    background-color: var(--hospital-green);
+    border-radius: 50%;
+    font-size: var(--small-font);
+    font-weight: bold;
+
+    /*Este sera el contenedor con posición absoluta, usamos top y right
+    para colocar el circulo en su lugar, centramos el número dentro
+    del circulo con GRID*/
+    position: absolute;
+    top: -0.6rem;
+    right: -0.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.desktop-menu {
+    position: absolute;
+    top: 6rem;
+    right: 6rem;
+    background: var(--white);
+    width: 10rem;
+    height: auto;
+    border: 0.1rem solid var(--very-light-pink);
+    border-radius: 0.6rem;
+
+    /*Top, right, bottom, left*/
+    padding: 2rem 2rem 0 2rem;
+}
+
+.desktop-menu ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.desktop-menu ul li{
+    text-align: end;
+}
+
+/*Todos MENOS el último hijo*/
+.desktop-menu ul li:not(:last-child){
+    font-weight: bold;
+    font-size: var(--med-font);
+}
+
+.desktop-menu ul li a{
+    color:var(--black);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+.desktop-menu ul li:last-child{
+    padding-top: 2rem;
+    border-top:  0.1rem solid var(--very-light-pink);
+}
+
+.desktop-menu ul li:last-child a{
+    color: var(--hospital-green);
+    font-size: var(--small-font);
+}
+
+/*Mobile Menu*/
+
+.mobile-menu {
+    background-color: var(--white);
+    padding: 2.4rem;
+    position: absolute;
+    top: 6.1rem;
+    left: 0;
+    width: calc(100% - 4.8rem);
+    height: 100%;
+}
+
+.mobile-menu a {
+    text-decoration: none;
+    color: var(--black);
+    font-weight: bold;
+}
+
+.mobile-menu ul{
+    padding: 0;
+    margin: 2.4rem 0 0;
+    list-style: none;
+}
+
+.mobile-menu ul:nth-child(1) {
+    border-bottom: 0.1rem solid var(--very-light-pink);
+}
+
+.mobile-menu ul:nth-child(1) li:first-child a{
+    cursor: default;
+}
+
+.mobile-menu ul li:last-child {
+    margin-bottom: 5rem;
+}
+
+.mobile-menu ul:nth-child(2) li:first-child {
+    margin-top: 5rem;
+}
+
+.mobile-menu ul li{
+    margin-bottom: 2.4rem;
+}
+
+.mobile-menu a{
+    text-decoration: none;
+    color: var(--black);
+    font-weight: bold;
+    font-size: var(--med-font);
+}
+
+.mobile-menu p {
+    font-size: var(--small-font);
+}
+
+.mobile-menu .email {
+    font-weight: 300;
+    margin-bottom: 0;
+}
+
+.mobile-menu .sign-out {
+    color: var(--hospital-green);
+    margin-top: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Aside (product-details y carrito)*/
+
+.title-container {
+    display: flex;
+}
+
+.title-container img {
+    transform: rotate(180deg);
+    margin-right: 1.4rem;
+}
+
+.title {
+    font-size: var(--large-font);
+    font-weight: bold;
+}
+
+.product-details {
+    background-color: var(--white);
+    width: 36rem;
+    padding: 2.4rem;
+    position: absolute;
+    right: 0;
+    box-sizing: border-box;
+}
+
+/*Es cada uno de los productos de la orden*/
+.shopping-cart {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 1.6rem;
+    margin-bottom: 2.4rem;
+
+    /*Centramos los elementos de manera vertical,se nota mucho más en el nombre del artíuclo y y su precio*/
+    align-items: center;
+}
+
+.shopping-cart figure {
+    margin: 0;
+}
+
+.shopping-cart figure img{
+    width: 7rem;
+    height: 7rem;
+    border-radius: 2rem;
+
+    /*Para evitar que la imagen se vea estirada o pixelada*/
+    object-fit: cover;
+}
+
+/*El segundo hijo que DEBE ser p*/
+.shopping-cart p:nth-child(2) {
+    color: var(--very-light-pink);
+    font-size: var(--small-font);
+}
+
+/*El tercer hijo que DEBE ser p*/
+.shopping-cart p:nth-child(3) {
+    font-size: var(--med-font);
+    font-weight: bold;
+}
+
+.shopping-cart img:last-child:hover {
+    cursor: pointer;
+}
+
+.my-order-container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+
+    /* Ancho del contenedor centrado */
+    width: 30rem;
+}
+
+.my-order-content {
+    /*Nos permite poner todo de manera vertical*/
+    display: flex;
+    flex-direction: column;
+}
+
+.order {
+    display: grid;
+    grid-template-columns: auto 1fr;
+
+    /*Separación ente los objetos del grid*/
+    gap: 1.6rem;
+
+    /*Centramos los elementos verticalmente, se nota principalmente en el precio ttal*/
+    align-items: center;
+
+    background-color: var(--text-input-field);
+    margin-bottom: 2.5rem;
+    border-radius: 0.8rem;
+    padding: 0 2.4rem;
+}
+
+/*Aplica los estilos al primer parrafo dentro de la clase*/
+.order p:nth-child(1){
+    /*Ponemos en vertical la fecha y el numero de articulos de la arden*/
+    display: flex;
+    flex-direction: column;
+}
+
+/*Dentro de las etiqueta p, el primer hijo que DEBE ser span
+la fecha de compra de la orden*/
+.order p span:first-child {
+    font-size: var(--med-font);
+    font-weight: bold;
+}
+
+/*Dentro de las etiqueta p, el hijo numero 2 que debe ser span*/
+.order p span:nth-child(2) {
+    font-size: var(--small-font);
+    color: var(--very-light-pink);
+}
+
+/*El hijo número 2 que DEBE ser p, que es el precio de la compra*/
+.order p:nth-child(2){
+    text-align: end;
+    font-size: var(--med-font);
+    font-weight: bold;
+}
+
+.primary-button {
+    background-color: var(--hospital-green);
+    border-radius: 0.8rem;
+    border: none;
+    color: var(--white);
+    width: 100%;
+    cursor: pointer;
+    font-size: var(--med-font);
+    font-family: 'Quicksand', sans-serif;
+    height: 5rem;
+}
+
+/*Detalles de un producto*/
+
+.product-detailed {
+    width: 36rem;
+    padding-bottom: 2.4rem;
+    background-color: white;
+
+    /*Ya que en desktop estos es un aside, usamos position absolute
+    para ponerlo hasta la derecha*/
+    position: absolute;
+    right: 0;
+}
+
+/*Creamos el boton de blanco redondo y usamos position absoluto para pocionarlo
+en la esquina superior izquierda*/
+.product-detailed-close {
+    background: var(--white);
+    width: 1.4rem;
+    height: 1.4rem;
+    position: absolute;
+    top: 1.2rem;
+    left: 1.2rem;
+    padding: 1.2rem;
+    border-radius: 50%;
+}
+
+.product-detailed-close:hover {
+    cursor: pointer;
+}
+
+/*La imagen abarcara todo el ancho del contenedor
+y usamos le damos border solo en la partde de abajo*/
+.product-detailed > img:nth-child(2) {
+    width: 100%;
+    height: 36rem;
+    border-radius: 0 0 2rem 2rem;
+    object-fit: cover;
+}
+
+.product-info {
+    margin: 2.4rem 2.4rem 0 2.4rem;
+}
+
+/*Damos estilo a los 3 textos con pseudoclases*/
+.products-info p:nth-child(1) {
+    font-weight: bold;
+    font-size: var(--med-font);
+    margin-top: 0;
+    margin-bottom: 0.4rem;
+}
+
+.products-info p:nth-child(2) {
+    color:var(--very-light-pink);
+    font-size: var(--med-font);
+    margin-top: 0;
+    margin-bottom: 3.6rem;
+}
+
+.products-info p:nth-child(3) {
+    color:var(--very-light-pink);
+    font-size: var(--small-font);
+    margin-top: 0;
+    margin-bottom: 3.6rem;
+}
+
+.primary-button {
+    background-color: var(--hospital-green);
+    border-radius: 0.8rem;
+    border: none;
+    color: var(--white);
+    width: 100%;
+    cursor: pointer;
+    font-size: var(--med-font);
+    font-family: 'Quicksand', sans-serif;
+    height: 5rem;
+}
+
+/*Usamos FLEXBOX para centrar el contenido del boto*/
+.add-to-cart-button {
+    /*Si lo hacemos con GRID, nos lo pone vertical*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*Lista de productos*/
+
+.cards-container {
+    display: grid;
+    --card-size: 24rem;
+    /*Con la siguiente linea hacemos que el GRID
+    se repita indefinidamente segun el número de
+    árticulos, cada CASILLA DEL GRID
+    , tentra un
+    tamaño de 24*24rem*/
+    grid-template-columns: repeat(auto-fill, var(--card-size));
+
+    /*Espacio entre las CASILLAS DEL GRID*/
+    gap: 2.6rem;
+
+    /*Centramos el contenido horizontalmente*/
+    place-content: center;
+
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.product-card {
+    /*Tamaño de cada producto*/
+    width: var(--card-size);
+}
+
+.product-card img {
+    width: 100%;
+    height: var(--card-size);
+    border-radius: 2rem;
+
+    /*Esta propiedad hace que la imagen se adecue al
+    tamaño dado, para no verse estirada o pixelada*/
+    object-fit: cover;
+}
+
+.product-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.2rem;
+}
+
+/*Por defecto la etiqueta figure tiene un margin, se lo quitamos
+para evitar problemas*/
+.product-info figure {
+    margin: 0;
+}
+
+.product-info figure img {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+/*El primer párrafo dentro de un div*/
+.product-info div p:nth-child(1) {
+    font-weight: bold;
+    font-size: var(--med-font);
+    margin-top: 0;
+    margin-bottom: 0.4rem;
+}
+.product-info div p:nth-child(2) {
+    font-size: var(--small-font);
+    color: var(--very-light-pink);
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+    .menu {
+        display: block;
+    }
+
+    .nav-bar-left ul, .nav-bar-email, .desktop-menu {
+        display: none;
+    }
+
+    .product-details {
+        width: 100%;
+    }
+
+    /*Media Querie que nos ayuda a que el tamaño de las imagenes
+    de los productos sea más chico en dispositivos mobiles*/
+    .cards-container {
+        --card-size: 14rem;
+    }
+
+    .product-detailed {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media (min-width: 641px) {
+    .mobile-menu {
+        display: none;
+    }
+
+    .product-detailed {
+        padding: 2.4rem;
+        border-radius: 0 0 2rem 2rem;
+    }
+
+    .product-detailed-close {
+        top: 3rem;
+        left: 3rem;
+    }
+
+    .product-detailed > img:nth-child(2) {
+        border-radius: 2rem;
+    }
+}

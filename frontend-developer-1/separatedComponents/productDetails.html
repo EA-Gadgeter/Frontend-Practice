@@ -30,7 +30,7 @@
             font-family: 'Quicksand', sans-serif;
         }
 
-        .product-details {
+        .product-detailed {
             width: 36rem;
             padding-bottom: 2.4rem;
 
@@ -42,7 +42,7 @@
 
         /*Creamos el boton de blanco redondo y usamos position absoluto para pocionarlo
         en la esquina superior izquierda*/
-        .product-details-close {
+        .product-detailed-close {
             background: var(--white);
             width: 1.4rem;
             height: 1.4rem;
@@ -53,13 +53,13 @@
             border-radius: 50%;
         }
 
-        .product-details-close:hover {
+        .product-detailed-close:hover {
             cursor: pointer;
         }
 
         /*La imagen abarcara todo el ancho del contenedor
         y usamos le damos border solo en la partde de abajo*/
-        .product-details > img:nth-child(2) {
+        .product-detailed > img:nth-child(2) {
             width: 100%;
             height: 36rem;
             border-radius: 0 0 2rem 2rem;
@@ -71,21 +71,21 @@
         }
 
         /*Damos estilo a los 3 textos con pseudoclases*/
-        .product-info p:nth-child(1) {
+        .products-info p:nth-child(1) {
             font-weight: bold;
             font-size: var(--med-font);
             margin-top: 0;
             margin-bottom: 0.4rem;
         }
 
-        .product-info p:nth-child(2) {
+        .products-info p:nth-child(2) {
             color:var(--very-light-pink);
             font-size: var(--med-font);
             margin-top: 0;
             margin-bottom: 3.6rem;
         }
 
-        .product-info p:nth-child(3) {
+        .products-info p:nth-child(3) {
             color:var(--very-light-pink);
             font-size: var(--small-font);
             margin-top: 0;
@@ -114,22 +114,22 @@
 
         /*Para mobile se ocupara toda la pantalla*/
         @media (max-width: 640px) {
-            .product-details {
+            .product-detailed {
                 width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <aside class="product-details">
+    <aside class="product-detailed">
         <!-- Encerramos el icono de cierra en un div, y hacer un boton más grande
         y redondo. -->
-        <div class="product-details-close">
-            <img src="./icons/icon_close.png" alt="close">
+        <div class="product-detailed-close">
+            <img src="../icons/icon_close.png" alt="close">
         </div>
 
         <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
-        <div class="product-info">
+        <div class="products-info">
             <p>$35,00</p>
             <p>Bike</p>
             <p>
@@ -138,7 +138,7 @@
             </p>
             <button class="primary-button add-to-cart-button">
                 <!-- Agregamos la imagen del icono dentro del mismo boton. -->
-                <img src="./icons/bt_add_to_cart.svg" alt="add to cart">
+                <img src="../icons/bt_add_to_cart.svg" alt="add to cart">
                 Add to cart
             </button>
         </div>
