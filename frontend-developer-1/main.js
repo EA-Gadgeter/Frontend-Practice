@@ -73,6 +73,7 @@ function createProductCard(product) {
 
     const productImgCart = document.createElement("img");
     productImgCart.setAttribute("src", "./icons/bt_add_to_cart.svg");
+    productImgCart.addEventListener("click", () => addToCart());
 
     productInfoFigure.appendChild(productImgCart);
     productInfoDiv.append(productPrice, productName);
@@ -80,6 +81,9 @@ function createProductCard(product) {
     productInfo.append(productInfoDiv, productInfoFigure);
 
     productCard.append(img, productInfo);
+
+    // We sent to the function the necessary product information
+    img.addEventListener("click", () => modifyProductDetailed(img.getAttribute("src"), product.price, product.name));
 
     return productCard;
 }
@@ -91,6 +95,29 @@ function renderProducts(productList) {
     }
 }
 
+function addToCart() {
+    numberProducts.innerText = parseInt(numberProducts.innerHTML) + 1;
+}
+
+/* Function that modifies the productDetailed aside with productCard that
+it's been clicked*/
+function modifyProductDetailed(productImg, productPrice, productName){
+
+    /* Getting the img tag from the childNodes of the productDetailed, we
+     get the right index by debugging console.log({productDetailedImg}) */
+    const productDetailedImg = productDetailed.childNodes[5];
+
+    // Getting productDetailedInfo of the productDetailed aside
+    const productDetailedInfo = productDetailed.childNodes[7];
+    // Getting each p tag from productDetailedInfo
+    const productDetailedPrice = productDetailedInfo.childNodes[1];
+    const productDetailedName = productDetailedInfo.childNodes[3];
+
+    productDetailedImg.setAttribute("src", productImg);
+    productDetailedPrice.innerText = "$" + productPrice;
+    productDetailedName.innerText = productName;
+}
+
 const navBarEmail = document.querySelector(".nav-bar-email");
 const desktopMenu = document.querySelector(".desktop-menu");
 const burgerIcon = document.querySelector(".menu");
@@ -100,11 +127,17 @@ const shoppingCart = document.querySelector(".product-details");
 const cardsContainer = document.querySelector(".cards-container");
 const productDetailed = document.querySelector(".product-detailed");
 const productDetailedClose = document.querySelector(".product-detailed-close");
+const numberProducts = document.querySelector("#number-products");
+const addToCartButton = document.querySelector(".add-to-cart-button");
+const myOrderContent = document.querySelector(".my-order-content");
+
 
 navBarEmail.addEventListener("click", () => toggleMenu(desktopMenu));
 burgerIcon.addEventListener("click", () => toggleMenu(mobileMenu));
 cartIcon.addEventListener("click", () => toggleMenu(shoppingCart));
 productDetailedClose.addEventListener("click", () => toggleMenu(productDetailedClose));
+addToCartButton.addEventListener("click", () => addToCart());
+
 
 const productList = [];
 
