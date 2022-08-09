@@ -73,7 +73,7 @@ function createProductCard(product) {
 
     const productImgCart = document.createElement("img");
     productImgCart.setAttribute("src", "./icons/bt_add_to_cart.svg");
-    productImgCart.addEventListener("click", () => addToCart());
+    productImgCart.addEventListener("click", () => addToCart(productImgCart));
 
     productInfoFigure.appendChild(productImgCart);
     productInfoDiv.append(productPrice, productName);
@@ -95,7 +95,37 @@ function renderProducts(productList) {
     }
 }
 
-function addToCart() {
+function addToCart(buttonElement) {
+    const imageContainer = buttonElement.closest(".product-card") ?? buttonElement.closest(".product-detailed");
+    let shoppingCartImage;
+
+    if(imageContainer.classList.contains("product-card")){
+        shoppingCartImage = imageContainer.childNodes[0].getAttribute("src");
+    }
+    else if(imageContainer.classList.contains("product-detailed")){
+        shoppingCartImage = imageContainer.childNodes[5].getAttribute("src");
+    }
+
+    const shoppingCart = document.createElement("div");
+    shoppingCart.classList.add("shopping-cart");
+
+    const shoppingCartFigure = document.createElement("figure");
+    const figureImage = document.createElement("img");
+    figureImage.setAttribute("src", shoppingCartImage);
+    shoppingCartFigure.appendChild(figureImage);
+
+    const productName = document.createElement("p");
+    const productPrice = document.createElement("p");
+    productName.innerText = "Bike";
+    productPrice.innerText = "$30";
+
+    const iconClose = document.createElement("img");
+    iconClose.setAttribute("src", "./icons/icon_close.png");
+
+    shoppingCart.append(shoppingCartFigure, productName, productPrice, iconClose);
+
+    myOrderContent.appendChild(shoppingCart);
+
     numberProducts.innerText = parseInt(numberProducts.innerHTML) + 1;
 }
 
@@ -136,7 +166,7 @@ navBarEmail.addEventListener("click", () => toggleMenu(desktopMenu));
 burgerIcon.addEventListener("click", () => toggleMenu(mobileMenu));
 cartIcon.addEventListener("click", () => toggleMenu(shoppingCart));
 productDetailedClose.addEventListener("click", () => toggleMenu(productDetailedClose));
-addToCartButton.addEventListener("click", () => addToCart());
+addToCartButton.addEventListener("click", () => addToCart(addToCartButton));
 
 
 const productList = [];
@@ -162,7 +192,7 @@ productList.push({
 productList.push({
     name:'Bicycle helmet',
     price: 250,
-    image: 'https://assets.specialized.com/i/specialized/60821-104_HLMT_ALIGN-II-HLMT-MIPS-CE-BLK-BLKREFL-S-M_HERO?bg=rgb(241,241,241)&w=1600&h=900&fmt=auto'
+    image: 'https://assets.specialized.com/i/specialized/60821-104_HLMT_ALIGN-II-HLMT-MIPS-CE-BLK-BLKREFL-S-M_HERO?bg=rgb(241,241,241)&w=1600&h=900&fmt=auto',
 });
 
 productList.push({
